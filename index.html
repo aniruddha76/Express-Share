@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>File Sharing</title>
+    </head>
+
+    <body>
+        <div>
+            <input type="file" id="file"><br /><br />
+            <button id="submit">Upload</button>
+        </div>
+    </body>
+
+    <script>
+        var button = document.getElementById("submit");
+        button.addEventListener("click", () => {
+            var uploadedFile = document.getElementById("file");
+            var file = uploadedFile.files[0];
+            if(file){
+                console.log(file);
+            } else {
+                alert("Error");
+            }
+        });
+    </script>
+</html>
