@@ -1,13 +1,29 @@
 const express = require("express");
 const path = require("path");
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        return cb(null, "./uploads");
+    },
+    filename: function (req, file, cb){
+        return cb(null, `${Date.now} + ${file.originalname}`);
+    },
+});
 
+const upload = multer({storage: storage});
 const app = express();
 const PORT = 3000;
+
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
     res.status(200);
     res.sendFile(path.join(__dirname, "./index.html"));
     // res.send("Server is online");
+});
+
+app.post("/upload", upload.single("file"),(req, res) =>{
+    res.send("file uploaded successfully!")
 });
 
 app.listen(PORT, (error) => {

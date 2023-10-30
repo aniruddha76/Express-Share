@@ -5,12 +5,14 @@
 
     <body>
         <div>
-            <input type="file" id="file"><br /><br />
-            <button id="submit">Upload</button>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" id="file" name="file"><br /><br />
+                <button id="submit" type="submit">Upload</button>
+            </form>
         </div>
     </body>
 
-    <script>
+    <!-- <script>
         var button = document.getElementById("submit");
         button.addEventListener("click", () => {
             var uploadedFile = document.getElementById("file");
@@ -21,5 +23,5 @@
                 alert("Error");
             }
         });
-    </script>
+    </script> -->
 </html>
