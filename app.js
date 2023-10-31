@@ -1,12 +1,14 @@
 const express = require("express");
 const path = require("path");
 const multer = require("multer");
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         return cb(null, "./uploads");
     },
     filename: function (req, file, cb){
-        return cb(null, `${Date.now} + ${file.originalname}`);
+        let randomNumber = Math.floor(Math.random() * 10000);
+        return cb(null, `${randomNumber}-${file.originalname}`);
     },
 });
 
@@ -23,7 +25,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/upload", upload.single("file"),(req, res) =>{
-    res.send("file uploaded successfully!")
+    res.send(`file uploaded successfully!<br />Your File Number is: <h3>${req.file.filename}</h3>`);
+});
+
+app.get("/download", (req, res) => {
+    res.send("Download is working!");
 });
 
 app.listen(PORT, (error) => {
