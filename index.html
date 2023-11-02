@@ -5,28 +5,34 @@
 
     <body>
         <div>
-            <form action="/upload" method="POST" enctype="multipart/form-data">
+            <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadSection">
                 <input type="file" id="file" name="file"><br /><br />
                 <button id="submit" type="submit">Upload</button>
             </form>
-
-            <form action="/download" method="GET" >
-                <input type="text" id="text" name="text" placeholder="Enter Name of file to download"><br /><br />
-                <button id="submit" type="submit">Download</button>
+            <button id="button2" onclick="toggleState()">Download Files</button><br /><br />
+            <form action="/download" method="GET" style="display: none;" id="downloadSection">
+                <input type="text" id="inputValue" name="inputValue" placeholder="Enter Name of file to download">&nbsp;
+                <button id="submit" type="submit" onclick="download()">Download</button>
             </form>
         </div>
     </body>
 
-    <!-- <script>
-        var button = document.getElementById("submit");
-        button.addEventListener("click", () => {
-            var uploadedFile = document.getElementById("file");
-            var file = uploadedFile.files[0];
-            if(file){
-                console.log(file);
+    <script>
+        function download() {
+            if(document.getElementById("inputValue").value.length == 0){
+                alert("Enter Name of File");
             } else {
-                alert("Error");
+                console.log("Downloading...");
             }
-        });
-    </script> -->
+        };
+
+        function toggleState() {
+            var downloadSection = document.getElementById("downloadSection");
+            if(downloadSection.style.display == "none") {
+                downloadSection.style.display = "block";
+            } else {
+                downloadSection.style.display = "none";
+            }
+        }
+    </script>
 </html>

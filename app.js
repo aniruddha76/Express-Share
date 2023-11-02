@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const multer = require("multer");
+const bodyParser = require("body-parser");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,6 +18,8 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.text({ type: "text/html" }));
 
 app.get("/", (req, res) => {
     res.status(200);
@@ -29,7 +32,9 @@ app.post("/upload", upload.single("file"),(req, res) =>{
 });
 
 app.get("/download", (req, res) => {
-    res.send("Download is working!");
+    let name = req.query.inputValue;
+    res.sendFile(path.join(__dirname, `./uploads/${name}`));
+    // res.sendFile(path.join(__dirname, "./uploads/6014-1.jpg"));
 });
 
 app.listen(PORT, (error) => {
