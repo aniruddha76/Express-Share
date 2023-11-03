@@ -18,12 +18,14 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 // app.use(bodyParser.urlencoded({extended: false}));
 // app.use(bodyParser.text({ type: "text/html" }));
 
 app.get("/", (req, res) => {
     res.status(200);
-    res.sendFile(path.join(__dirname, "./index.html"));
+    res.render("index.html");
+    // res.sendFile(path.join(__dirname, "./index.html"));
     // res.send("Server is online");
 });
 

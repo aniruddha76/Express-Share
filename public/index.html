@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>File Sharing</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <center>
+        <div class="container1">
+            <h1>Express File Share</h1>
+            <button id="button1" class="btn" onclick="toggleState1()">Upload Files</button>
+            <button id="button2" class="btn" onclick="toggleState2()">Download Files</button>
+        </div>
+
+        <div class="container2">
+            <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadSection" style="display: none;">
+                <input type="file" id="file" name="file"><br /><br />
+                <button id="upload-btn" type="submit" class="btn">Upload</button>
+            </form>
+
+            <form action="/download" method="GET" style="display: none;" id="downloadSection">
+                <input type="text" id="inputValue" name="inputValue" placeholder="Enter Name of file to download"><br /><br />
+                <button id="download-btn" type="submit" class="btn" onclick="download()">Download</button>
+            </form>
+        </div>
+        </center>
+    </body>
+
+    <script>
+        function download() {
+            if(document.getElementById("inputValue").value.length == 0){
+                alert("Enter Name of File");
+            } else {
+                console.log("Downloading...");
+            }
+        };
+
+        function toggleState1() {
+            var downloadSection = document.getElementById("uploadSection");
+            if(downloadSection.style.display == "none") {
+                downloadSection.style.display = "block";
+            } else {
+                downloadSection.style.display = "none";
+            }
+        }
+
+        function toggleState2() {
+            var downloadSection = document.getElementById("downloadSection");
+            if(downloadSection.style.display == "none") {
+                downloadSection.style.display = "block";
+            } else {
+                downloadSection.style.display = "none";
+            }
+        }
+    </script>
+</html>

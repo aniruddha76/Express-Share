@@ -1,0 +1,52 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.container1{
+    padding-bottom: 5%;
+    padding-top: 10%;
+}
+
+h1{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#button1{
+    margin-right: 10px;
+}
+
+.btn{
+    color: white;
+    background-color: rgba(60,70,255);
+    font-size: 1.0rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.375rem;
+    height: 48px;
+    width: 214px;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn:hover{
+    background-color: rgb(40, 46, 177);
+}
+
+#file{
+    border: 1px dashed;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: white;
+}
+
+#inputValue{
+    padding: 4%;
+    height: 30px;
+    width: 100%;
+}
