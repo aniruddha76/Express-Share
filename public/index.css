@@ -5,6 +5,10 @@ body{
     background-color: #ffffff;
 }
 
+/* img{
+    filter: drop-shadow(5px 5px 5px #222);
+} */
+
 .card{
     width: 100%;
     border: none;
@@ -40,6 +44,7 @@ h1{
 }
 .btn:hover{
     background-color: rgb(40, 46, 177);
+    transition: 2s;
 }
 
 #file{
